@@ -7,7 +7,7 @@ A basic CLI to track and sort your video game backlog, for all the other steam s
 - [ ] Takes command line user input
   - [ ] Parsed by commands and data
     - [x] Program requests command input
-      -[x] May also be requested to list commands
+      - [x] May also be requested to list commands
     - [ ] Reads command and follows up requesting relevant data
 
 - [ ] Basic CRUD functionality
