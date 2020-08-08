@@ -11,6 +11,9 @@ import org.junit.Test;
 public class ReaderTest {
     String test = "testeroni";
 
+    /**
+     * Test that reader correctly takes inputstream and outputs as a string
+     */
     @Test
     public void CorrectReadOutput() throws UnsupportedEncodingException {
         InputStream in = new ByteArrayInputStream(test.getBytes());
