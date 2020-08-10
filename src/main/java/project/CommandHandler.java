@@ -6,6 +6,7 @@ import java.util.Map;
 public class CommandHandler {
     public Map<String,String> GameList;
     private InputReader reader = new InputReader();
+    private String[] commands = {"commands", "exit", "add", "remove", "display"};
 
     /**
      * constructor to inject the map data type for game storage
@@ -13,6 +14,33 @@ public class CommandHandler {
      */
     public CommandHandler(Map<String,String> newlist){
         this.GameList = newlist;
+    }
+
+    public String Handle(InputStream source){
+        String command;
+        command = reader.Read(source);
+        if(command.equals(commands[0])){
+            for (String i : commands) {
+                System.out.println(i);
+            }
+        }
+        if(command.equals(commands[2])){
+            System.out.println("Enter game title:");
+            InputStream in1 = System.in;
+            System.out.println("Enter game genre:");
+            InputStream in2 = System.in;
+            this.Add(in1, in2);
+        }
+        if(command.equals(commands[3])){
+            System.out.println("Enter game to remove:");
+            InputStream in = System.in;
+            this.Remove(in);
+        }
+        if(command.equals(commands[4])){
+            this.Display();
+        }
+
+        return command;
     }
 
     /**
@@ -23,13 +51,8 @@ public class CommandHandler {
     public void Add(InputStream source, InputStream source2){
         String game;
         String genre;
-
-        System.out.println("Enter game title:");
         game = reader.Read(source);
-
-        System.out.println("Enter game genre:");
         genre = reader.Read(source2);
-
         this.GameList.put(game, genre);
     }
     
@@ -39,10 +62,7 @@ public class CommandHandler {
      */
     public void Remove(InputStream source){
         String game;
-
-        System.out.println("Enter game to remove:");
         game = reader.Read(source);
-
         this.GameList.remove(game);
     }
 
@@ -54,4 +74,5 @@ public class CommandHandler {
         this.GameList.forEach((key, value) -> System.out.println(key + " - " + value));
         System.out.println("-------------------------");
     }
+
 }

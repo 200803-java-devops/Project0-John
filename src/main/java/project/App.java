@@ -1,5 +1,6 @@
 package project;
 
+import java.util.HashMap;
 
 /**
  * Hello world!
@@ -7,18 +8,13 @@ package project;
  */
 public class App {
     public static void main(final String[] args) {
-        String[] commands = {"commands", "exit"};
-        String command = "";
-        InputReader reader = new InputReader();
+        CommandHandler handler = new CommandHandler(new HashMap<String, String>());
+        String command= "";
+        String exit = "exit";
         
-        while(!command.equals(commands[1])){
+        while(!command.equals(exit)){
             System.out.println("Enter command or type \"commands\" to see a list of commands, or \"exit\" to exit");
-            command = reader.Read(System.in);
-            if(command.equals(commands[0])){
-                for (String i : commands) {
-                    System.out.println(i);
-                }
-            }
+            command = handler.Handle(System.in);
         }
     }
 }
