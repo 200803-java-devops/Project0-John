@@ -16,9 +16,12 @@ public class CommandHandler {
         this.GameList = newlist;
     }
 
-    public String Handle(InputStream source){
+    public boolean Handle(InputStream source){
         String command;
         command = reader.Read(source);
+        if(command.equals(commands[1])){
+            return true;
+        }
         if(command.equals(commands[0])){
             for (String i : commands) {
                 System.out.println(i);
@@ -40,7 +43,7 @@ public class CommandHandler {
             this.Display();
         }
 
-        return command;
+        return false;
     }
 
     /**

@@ -13,7 +13,6 @@ public class CommandTest {
     
     /**
      * Test that provided input is successfully added to map
-     * @param input
      */
     @Test
     public void AddTest(){
