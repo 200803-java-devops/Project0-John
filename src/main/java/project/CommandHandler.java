@@ -1,19 +1,18 @@
 package project;
 
 import java.io.InputStream;
-import java.util.Map;
 
 public class CommandHandler {
-    public Map<String,String> GameList;
     private InputReader reader = new InputReader();
     private String[] commands = {"commands", "exit", "add", "remove", "display"};
+    public GameList gamelist; 
 
     /**
      * constructor to inject the map data type for game storage
-     * @param newlist
+     * @param gl game list object
      */
-    public CommandHandler(Map<String,String> newlist){
-        this.GameList = newlist;
+    public CommandHandler(GameList gl){
+        this.gamelist = gl;
     }
 
     public boolean Handle(InputStream source){
@@ -28,54 +27,16 @@ public class CommandHandler {
             }
         }
         if(command.equals(commands[2])){
-            System.out.println("Enter game title:");
-            InputStream in1 = System.in;
-            System.out.println("Enter game genre:");
-            InputStream in2 = System.in;
-            this.Add(in1, in2);
+            gamelist.add(new Game(System.in, System.in, System.in));
         }
         if(command.equals(commands[3])){
-            System.out.println("Enter game to remove:");
-            InputStream in = System.in;
-            this.Remove(in);
+            System.out.println("Please enter title of game to remove: ");
+            gamelist.remove(reader.Read(System.in));
         }
         if(command.equals(commands[4])){
-            this.Display();
+            gamelist.display();
         }
 
         return false;
     }
-
-    /**
-     * read game and genre, then enter into map
-     * @param source
-     * @param source2
-     */
-    public void Add(InputStream source, InputStream source2){
-        String game;
-        String genre;
-        game = reader.Read(source);
-        genre = reader.Read(source2);
-        this.GameList.put(game, genre);
-    }
-    
-    /**
-     * remove game from map
-     * @param source
-     */
-    public void Remove(InputStream source){
-        String game;
-        game = reader.Read(source);
-        this.GameList.remove(game);
-    }
-
-    /**
-     * output full map
-     */
-    public void Display(){
-        System.out.println("-------------------------");
-        this.GameList.forEach((key, value) -> System.out.println(key + " - " + value));
-        System.out.println("-------------------------");
-    }
-
 }

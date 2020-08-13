@@ -1,18 +1,13 @@
 package project;
 
 import java.io.InputStream;
-import java.util.HashMap;
 
 /**
  * class to run program, abstraction to keep main clear
  */
 public class ProgramOperations {
     public static boolean exitStatus;
-    private static CommandHandler handler = new CommandHandler(new HashMap<String, String>());
-
-    public ProgramOperations(){
-        exitStatus = false;
-    }
+    private static CommandHandler handler = new CommandHandler(new GameList());
 
     /**
      * method that runs the program from created 
