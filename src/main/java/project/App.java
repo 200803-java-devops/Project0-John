@@ -1,5 +1,7 @@
 package project;
 
+import project.cli.ProgramOperations;
+
 /**
  * Hello world!
  *

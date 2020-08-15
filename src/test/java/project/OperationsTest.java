@@ -7,6 +7,8 @@ import java.io.InputStream;
 
 import org.junit.Test;
 
+import project.cli.ProgramOperations;
+
 public class OperationsTest {
     
     @Test

@@ -5,6 +5,9 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import project.cli.Game;
+import project.cli.GameList;
+
 public class GameListTest {
     String game = "Skyrim";
     String genre = "RPG";

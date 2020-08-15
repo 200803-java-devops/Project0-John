@@ -7,6 +7,8 @@ import java.io.InputStream;
 
 import org.junit.Test;
 
+import project.cli.Game;
+
 public class GameTest {
     Game expected = new Game("Skyrim", "RPG", "First Person");
     

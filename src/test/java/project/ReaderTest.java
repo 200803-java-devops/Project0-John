@@ -8,6 +8,8 @@ import java.io.UnsupportedEncodingException;
 
 import org.junit.Test;
 
+import project.cli.InputReader;
+
 public class ReaderTest {
     String test = "testeroni";
 

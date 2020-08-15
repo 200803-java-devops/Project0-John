@@ -1,4 +1,4 @@
-package project;
+package project.cli;
 
 import java.util.ArrayList;
 import java.util.List;
