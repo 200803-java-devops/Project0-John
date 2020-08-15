@@ -12,6 +12,9 @@ A basic CLI to track and sort your video game backlog, for all the other steam s
 
 - [x] Basic CRUD functionality
 
+- [ ] Persists game list to database
+  - [ ] GameList mirroring database created on program start
+
 ## How to Use
 
 Build and run unit test cases with mvn test
