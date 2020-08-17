@@ -23,4 +23,8 @@ public class GameList {
         this.gamelist.forEach(game -> System.out.println(game.title + " - " + game.genre + " - " + game.control));
         System.out.println("-------------------------");    
     }
+
+    public boolean equals(GameList otherlist){
+        return this.gamelist.equals(otherlist.gamelist);
+    }
 }

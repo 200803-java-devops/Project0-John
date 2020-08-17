@@ -1,4 +1,4 @@
-package project;
+package project.clitest;
 
 import static org.junit.Assert.assertEquals;
 

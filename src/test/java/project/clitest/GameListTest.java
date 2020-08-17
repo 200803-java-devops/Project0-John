@@ -1,4 +1,4 @@
-package project;
+package project.clitest;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -27,5 +27,14 @@ public class GameListTest {
         test.add(gameobj);
         test.remove(game);
         assertFalse(test.gamelist.contains(gameobj));
+    }
+
+    @Test
+    public void testEquals(){
+        GameList list1 = new GameList();
+        GameList list2 = new GameList();
+        list1.add(gameobj);
+        list2.add(gameobj);
+        assertTrue(list1.equals(list2));
     }
 }
