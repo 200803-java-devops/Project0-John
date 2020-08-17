@@ -16,7 +16,7 @@ public class Getter {
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("SELECT * FROM games");
         while (rs.next()){
-            gamelist.add(new Game(rs.getString("title"), rs.getString("genre"), rs.getString("control")));
+            gamelist.initAdd(new Game(rs.getString("title"), rs.getString("genre"), rs.getString("cont")));
         }
         
         return gamelist;

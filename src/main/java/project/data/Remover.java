@@ -14,7 +14,7 @@ public class Remover {
             statement.executeUpdate();
             connection.close();
         }catch(SQLException e){
-            System.err.println("connection failed in getGame of retreive class");
+            System.err.println("connection failed in removeGame of remove class");
         }
     }
 }

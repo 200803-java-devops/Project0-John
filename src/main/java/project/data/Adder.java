@@ -18,7 +18,7 @@ public class Adder {
             statement.executeUpdate();
             connection.close();
         }catch(SQLException e){
-            System.err.println("connection failed in getGame of retreive class");
+            System.err.println("connection failed in addGame of add class");
         }
     }
 }
