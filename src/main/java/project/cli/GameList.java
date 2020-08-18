@@ -14,8 +14,10 @@ public class GameList {
     }
 
     public void add(Game game){
+        Runnable runnable = new Adder(game);
+        Thread thread = new Thread(runnable);
+        thread.start();
         this.gamelist.add(game);
-        Adder.addGame(game);
     }
 
     public void initAdd(Game game){
@@ -23,8 +25,10 @@ public class GameList {
     }
 
     public void remove(String title){
+        Runnable runnable = new Remover(title);
+        Thread thread = new Thread(runnable);
+        thread.start();
         this.gamelist.removeIf(n -> n.title.equals(title));
-        Remover.removeGame(title);
     }
 
     public void display(){
