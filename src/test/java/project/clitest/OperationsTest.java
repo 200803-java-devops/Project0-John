@@ -13,7 +13,7 @@ public class OperationsTest {
     
     @Test
     public void ProgramRunTest(){
-        String input = "exit";
+        String input = "1";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         ProgramOperations.RunApp(in);
         assertTrue(ProgramOperations.exitStatus);

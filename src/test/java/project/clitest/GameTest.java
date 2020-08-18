@@ -10,7 +10,7 @@ import org.junit.Test;
 import project.cli.Game;
 
 public class GameTest {
-    Game expected = new Game("Skyrim", "RPG", "First Person");
+    Game expected = new Game("Skyrim", "RPG", "First Person", false);
     
     @Test
     public void setTitleTest(){
@@ -44,10 +44,12 @@ public class GameTest {
         String title = "Skyrim";
         String genre = "1";
         String control = "1";
+        String started = "1";
         InputStream in1 = new ByteArrayInputStream(title.getBytes());
         InputStream in2 = new ByteArrayInputStream(genre.getBytes());
         InputStream in3 = new ByteArrayInputStream(control.getBytes());
-        Game actual = new Game(in1, in2, in3);
-        assertTrue((expected.title.equals(actual.title)) && (expected.genre.equals(actual.genre)) && (expected.control.equals(actual.control)));
+        InputStream in4 = new ByteArrayInputStream(started.getBytes());
+        Game actual = new Game(in1, in2, in3, in4);
+        assertTrue((expected.title.equals(actual.title)) && (expected.genre.equals(actual.genre)) && (expected.control.equals(actual.control)) && (expected.started.equals(actual.started)));
     }
 }

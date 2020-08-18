@@ -12,19 +12,20 @@ public class GameListTest {
     String game = "Skyrim";
     String genre = "RPG";
     String control = "First Person";
-    Game gameobj = new Game(game, genre, control);
+    Boolean started = false;
+    Game gameobj = new Game(game, genre, control, started);
 
     @Test
     public void TestAdd(){
         GameList test = new GameList();
-        test.add(gameobj);
+        test.testAdd(gameobj);
         assertTrue(test.gamelist.contains(gameobj));
     }
 
     @Test
     public void TestRemove(){
         GameList test = new GameList();
-        test.add(gameobj);
+        test.testAdd(gameobj);
         test.remove(game);
         assertFalse(test.gamelist.contains(gameobj));
     }
@@ -33,8 +34,8 @@ public class GameListTest {
     public void testEquals(){
         GameList list1 = new GameList();
         GameList list2 = new GameList();
-        list1.add(gameobj);
-        list2.add(gameobj);
+        list1.testAdd(gameobj);
+        list2.testAdd(gameobj);
         assertTrue(list1.equals(list2));
     }
 }

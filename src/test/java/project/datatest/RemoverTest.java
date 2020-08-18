@@ -20,7 +20,7 @@ public class RemoverTest {
             try (Statement check = connection.createStatement();) {
                 connection.setAutoCommit(false);
                 check.executeUpdate("DELETE FROM games");
-                check.executeUpdate("INSERT INTO games (title, genre, cont) VALUES ('testT', 'testG', 'testC')");
+                check.executeUpdate("INSERT INTO games (title, genre, cont, started) VALUES ('testT', 'testG', 'testC', 'false')");
                 String sql = "DELETE FROM games WHERE title = ?";
                 PreparedStatement statement = connection.prepareStatement(sql);
                 statement.setString(1, "testT");
