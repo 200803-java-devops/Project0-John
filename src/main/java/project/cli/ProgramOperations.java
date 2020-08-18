@@ -25,7 +25,7 @@ public class ProgramOperations {
         }
         exitStatus = false;
         while(!exitStatus){
-            System.out.println("Enter command or type \"commands\" to see a list of commands, or \"exit\" to exit");
+            handler.showCommands();
             exitStatus = handler.Handle(source);
         }
     }

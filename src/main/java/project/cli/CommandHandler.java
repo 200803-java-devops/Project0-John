@@ -1,10 +1,13 @@
 package project.cli;
 
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CommandHandler {
     private InputReader reader = new InputReader();
-    private String[] commands = {"commands", "exit", "add", "remove", "display"};
+    private Map<String, String> commands = new HashMap<String, String>();
+    private Map<String, String> displayType = new HashMap<String, String>();
     public GameList gamelist; 
 
     /**
@@ -13,30 +16,47 @@ public class CommandHandler {
      */
     public CommandHandler(GameList gl){
         this.gamelist = gl;
+        commands.put("1", "exit");
+        commands.put("2", "add");
+        commands.put("3", "remove");
+        commands.put("4", "display");
+        commands.put("5", "get random game");
+        displayType.put("1", "genre");
+        displayType.put("2", "control type");
+        displayType.put("3", "started");
+        displayType.put("4", "all");
+    }
+
+    public void showCommands(){
+        System.out.println("Type number associated with desired command:");
+        this.commands.forEach((key, value) -> System.out.println(key + " - " + value));
     }
 
     public boolean Handle(InputStream source){
         String command;
         command = reader.Read(source);
-        if(command.equals(commands[1])){
+        if(command.equals("1")){
             return true;
         }
-        if(command.equals(commands[0])){
-            for (String i : commands) {
-                System.out.println(i);
-            }
+        if(command.equals("2")){
+            gamelist.add(new Game(System.in, System.in, System.in, System.in));
         }
-        if(command.equals(commands[2])){
-            gamelist.add(new Game(System.in, System.in, System.in));
-        }
-        if(command.equals(commands[3])){
+        if(command.equals("3")){
             System.out.println("Please enter title of game to remove: ");
             gamelist.remove(reader.Read(System.in));
         }
-        if(command.equals(commands[4])){
-            gamelist.display();
+        if(command.equals("4")){
+            System.out.println("How would you like to sort the games list?");
+            displayType.forEach((key, value) -> System.out.println(key + " - " + value));
+            String command2 = reader.Read(System.in);
+            gamelist.display(command2);
         }
-
+        if(command.equals("5")){
+            System.out.println("From what set of games should a game be selected?");
+            displayType.forEach((key, value) -> System.out.println(key + " - " + value));
+            String command2 = reader.Read(System.in);
+            gamelist.getRand(command2);
+        }
         return false;
     }
 }

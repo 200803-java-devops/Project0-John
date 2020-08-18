@@ -14,12 +14,13 @@ public class Adder implements Runnable {
     }
 
     public static void addGame(Game game){
-        String sql = "INSERT INTO games (title, genre, cont) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO games (title, genre, cont, started) VALUES (?, ?, ?, ?)";
         try(Connection connection = ConnectionUtil.getConnection()){
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, game.title);
             statement.setString(2, game.genre);
             statement.setString(3, game.control);
+            statement.setBoolean(4, game.started);
             statement.executeUpdate();
             connection.close();
         }catch(SQLException e){
@@ -29,12 +30,13 @@ public class Adder implements Runnable {
 
     @Override
     public void run() {
-        String sql = "INSERT INTO games (title, genre, cont) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO games (title, genre, cont, started) VALUES (?, ?, ?, ?)";
         try(Connection connection = ConnectionUtil.getConnection()){
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, game.title);
             statement.setString(2, game.genre);
             statement.setString(3, game.control);
+            statement.setBoolean(4, game.started);
             statement.executeUpdate();
             connection.close();
         }catch(SQLException e){
