@@ -8,6 +8,7 @@ import project.cli.ProgramOperations;
  */
 public class App {
     public static void main(final String[] args) {
-        ProgramOperations.RunApp(System.in);
+        ProgramOperations ops = new ProgramOperations();
+        ops.RunApp(System.in);
     }
 }

@@ -15,7 +15,8 @@ public class OperationsTest {
     public void ProgramRunTest(){
         String input = "1";
         InputStream in = new ByteArrayInputStream(input.getBytes());
-        ProgramOperations.RunApp(in);
+        ProgramOperations ops = new ProgramOperations();
+        ops.RunApp(in);
         assertTrue(ProgramOperations.exitStatus);
     }
 }

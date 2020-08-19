@@ -15,6 +15,9 @@ public class InputReader {
 
     }
 
+    /**
+     * reads inputstream to string
+     */
     public String Read(InputStream source) {
         this.reader = new BufferedReader(new InputStreamReader(source));
         String command = "";

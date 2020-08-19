@@ -29,13 +29,4 @@ public class GameListTest {
         test.remove(game);
         assertFalse(test.gamelist.contains(gameobj));
     }
-
-    @Test
-    public void testEquals(){
-        GameList list1 = new GameList();
-        GameList list2 = new GameList();
-        list1.testAdd(gameobj);
-        list2.testAdd(gameobj);
-        assertTrue(list1.equals(list2));
-    }
 }

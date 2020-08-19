@@ -13,11 +13,12 @@ public class ProgramOperations {
     private static CommandHandler handler;
 
     /**
-     * method that runs the program from created
-     * 
-     * @param source
+     * method that runs the program, copies existing entries in database to initial gamelist
+     * @param source source of user input, abstracted to inputstream for testing
      */
-    public static void RunApp(InputStream source) {
+    public void RunApp(InputStream source) {
+        java.util.logging.Logger logger = java.util.logging.Logger.getLogger(this.getClass().getName());
+        logger.info(java.time.LocalTime.now() + " Program Running");
         try {
             handler = new CommandHandler(Getter.getAll());
         } catch (SQLException e) {

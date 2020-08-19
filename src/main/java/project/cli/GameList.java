@@ -9,37 +9,68 @@ import project.data.Adder;
 import project.data.Getter;
 import project.data.Remover;
 
+/**
+ * list of games object used to execute commands for different features of program
+ */
 public class GameList {
     public List<Game> gamelist;
     public InputReader reader = new InputReader();
+    java.util.logging.Logger logger = java.util.logging.Logger.getLogger(this.getClass().getName());
 
+    /**
+     * constructor initializes list of games
+     */
     public GameList() {
         this.gamelist = new ArrayList<Game>();
+        logger.setUseParentHandlers(false);
     }
 
+    /**
+     * Add game to list, added game also persisted to database
+     * @param game game to add
+     */
     public void add(Game game) {
+        logger.info(java.time.LocalTime.now() + " Database Accessed");
         Runnable runnable = new Adder(game);
         Thread thread = new Thread(runnable);
         thread.start();
         this.gamelist.add(game);
     }
 
+    /**
+     * Add method that does not persist to database for testing
+     * @param game game to add
+     */
     public void testAdd(Game game) {
         this.gamelist.add(game);
     }
 
+    /**
+     * Add method that does not persist to database for initialization REDUNDANT
+     * @param game game to add
+     */
     public void initAdd(Game game) {
         this.gamelist.add(game);
     }
 
+    /**
+     * Removes game from list, removed game is also deleted from database
+     * @param title title of game to be removed
+     */
     public void remove(String title) {
+        logger.info(java.time.LocalTime.now() + " Database Accessed");
         Runnable runnable = new Remover(title);
         Thread thread = new Thread(runnable);
         thread.start();
         this.gamelist.removeIf(n -> n.title.equals(title));
     }
 
+    /**
+     * Displays list of game, also contains logic to sort if user desires
+     * @param displayType input from user defining what to sort by
+     */
     public void display(String displayType) {
+        logger.info(java.time.LocalTime.now() + " Database Accessed");
         GameList displayList = new GameList();
         Game temp = new Game();
         String input;
@@ -91,18 +122,11 @@ public class GameList {
         System.out.println("-------------------------");    
     }
 
-    public boolean equals(GameList otherlist){
-        boolean eq = true;
-        if(this.gamelist.size() != otherlist.gamelist.size()){
-            eq = false;
-        }
-        for(int i = 0; i < this.gamelist.size(); i++){
-            eq = this.gamelist.get(i).equals(otherlist.gamelist.get(i));
-        }
-        return eq;
-    }
-
+    /**
+     * Print random game from list, can also get game from sublist
+     */
     public void getRand(String groupType){
+        logger.info(java.time.LocalTime.now() + " Database Accessed");
         GameList displayList = new GameList();
         Game temp = new Game();
         String input;

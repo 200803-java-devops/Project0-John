@@ -11,6 +11,7 @@ public class CommandHandler {
     public GameList gamelist; 
 
     /**
+     * Command Handler class stores gamelist and translates user input to execute correct command
      * constructor to inject the map data type for game storage
      * @param gl game list object
      */
@@ -27,11 +28,19 @@ public class CommandHandler {
         displayType.put("4", "all");
     }
 
+    /**
+     * Helper method to display available commands
+     */
     public void showCommands(){
         System.out.println("Type number associated with desired command:");
         this.commands.forEach((key, value) -> System.out.println(key + " - " + value));
     }
 
+    /**
+     * Method to read input stream and execute correct gamelist method for command
+     * @param source input command, abstracted as input stream for testing purposes
+     * @return true to continue program, false if exit command is given
+     */
     public boolean Handle(InputStream source){
         String command;
         command = reader.Read(source);
